@@ -1114,6 +1114,7 @@ function fitMenuText(){
      // Avoid repeating the protein already named in the heading.
      if(desc){
        let value=desc.textContent;
+       if(/pad thai/i.test(dish.textContent))value=value.replace(/\bEi(?:\s+und|\s*,)\s*Erdnüssen/gi,'Ei, Sojasprossen und Erdnüssen');
        const ingredients=[['Rind(?:fleisch)?','Rind(?:fleisch)?'],['Schwein(?:efleisch)?','Schwein(?:efleisch)?'],['Fisch(?:filets?)?','Fisch(?:filets?)?'],['Poulet','Poulet'],['Crevetten','Crevetten'],['Entenbrust','Entenbrust'],['Tofu','Tofu(?:würfelchen)?']];
        for(const [titlePattern,bodyPattern] of ingredients){
          if(new RegExp('\\b'+titlePattern+'\\b','i').test(dish.textContent))value=value.replace(new RegExp('\\b'+bodyPattern+'\\b','gi'),'');
