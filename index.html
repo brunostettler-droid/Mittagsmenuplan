@@ -1123,11 +1123,11 @@ function fitMenuText(){
  document.querySelectorAll('.menu-frame').forEach(frame=>{
    const content=frame.firstElementChild,style=getComputedStyle(frame);
    const height=frame.clientHeight-parseFloat(style.paddingTop)-parseFloat(style.paddingBottom);
-   const width=content.clientWidth;
+   const width=frame.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight);
    if(height<=0||width<=0)return;
    const dish=content.querySelector('.dish'),desc=content.querySelector('.desc');
    if(dish){
-     content.style.display='block';content.style.height='auto';content.style.flex='0 0 auto';
+     content.style.display='block';content.style.height='auto';content.style.flex='0 0 auto';content.style.width='100%';content.style.minWidth='0';
      frame.style.justifyContent='flex-start';
      dish.style.whiteSpace='nowrap';
      dish.style.letterSpacing='-0.3px';
