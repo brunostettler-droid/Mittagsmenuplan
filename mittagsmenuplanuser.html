@@ -73,7 +73,7 @@ body.user-resizing,body.user-resizing *{cursor:col-resize!important;user-select:
   text-shadow:none!important;filter:none!important;animation:none!important;
  }
 }
-</style><style id="monochromeOuterBorderRemoval">@media print{#paper#paper#paper{border:0!important;outline:0!important;border-radius:0!important;box-shadow:none!important}}</style></head><body><svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs><filter id="headTint" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0" result="ink"/><feFlood id="headTintColor" flood-color="#ed1212"/><feComposite operator="in" in2="ink"/></filter><filter id="backgroundTint" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0" result="ink"/><feFlood id="backgroundTintColor" flood-color="#ed1212"/><feComposite operator="in" in2="ink"/></filter></defs></svg>
+</style><style id="monochromeOuterBorderRemoval">@media print{#paper#paper#paper{border:0!important;outline:0!important;border-radius:0!important;box-shadow:none!important}}</style><style>#paper .menugrid .dish:focus{overflow:visible!important;white-space:normal!important}</style></head><body><svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs><filter id="headTint" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0" result="ink"/><feFlood id="headTintColor" flood-color="#ed1212"/><feComposite operator="in" in2="ink"/></filter><filter id="backgroundTint" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0" result="ink"/><feFlood id="backgroundTintColor" flood-color="#ed1212"/><feComposite operator="in" in2="ink"/></filter></defs></svg>
 
 <div class="workspace">
 <main><div class="canvasbar"><div><strong>Druckvorschau</strong><span>A4 · Querformat</span></div><div class="plan-zoom" role="group" aria-label="Nur den Menüplan vergrössern"><button id="zoomOut" type="button" aria-label="Menüplan verkleinern">−</button><label class="zoom">Menüplan<select id="zoom"><option value="fit">Einpassen</option><option value="0.2">20 %</option><option value="0.3">30 %</option><option value="0.4">40 %</option><option value="0.5">50 %</option><option value="0.6">60 %</option><option value="0.7">70 %</option><option value="0.8">80 %</option><option value="0.9">90 %</option><option value="1">100 %</option><option value="1.1">110 %</option><option value="1.2">120 %</option><option value="1.3">130 %</option><option value="1.4">140 %</option><option value="1.5">150 %</option><option value="1.6">160 %</option><option value="1.7">170 %</option><option value="1.8">180 %</option><option value="1.9">190 %</option><option value="2">200 %</option><option value="2.1">210 %</option><option value="2.2">220 %</option><option value="2.3">230 %</option><option value="2.4">240 %</option><option value="2.5">250 %</option><option value="2.6">260 %</option><option value="2.7">270 %</option><option value="2.8">280 %</option><option value="2.9">290 %</option><option value="3">300 %</option></select></label><button id="zoomIn" type="button" aria-label="Menüplan vergrössern">+</button><button id="zoomFit" type="button">Einpassen</button></div></div><div id="overflow" role="alert" hidden>Der Inhalt ist für eine A4-Seite zu lang. Verkleinere Schrift oder Abstände, oder kürze die Texte.</div><div class="canvas" id="canvas"><div id="paperWrap"><article id="paper" aria-label="Bearbeitbarer Mittagsmenuplan"></article></div></div><div class="canvasfoot">Texte direkt anklicken und bearbeiten <span>Änderungen erscheinen sofort in der Vorschau</span></div></main><aside class="menu-picker" aria-label="Menüauswahl"><h2>Menü auswählen</h2><p class="hint">Vorlagen aus deinen vier Wochenplänen und eigene Gerichte.</p><button id="newDish" type="button">+ Eigenes Gericht hinzufügen</button><div class="dish-modes" role="group" aria-label="Gerichte bearbeiten oder auswählen"><button id="editDish" type="button" aria-pressed="false">Bearbeiten</button><button id="selectDish" type="button" aria-pressed="true">Auswählen</button><button id="deleteDishMode" type="button" aria-pressed="false">Löschen</button></div><button id="restoreDeletedDish" type="button" hidden style="width:100%;margin-bottom:10px">Gelöschtes Gericht wiederherstellen</button><p id="editDishHint" class="hint" role="status" hidden>Wähle jetzt das Gericht aus, das du bearbeiten möchtest.</p><label>Gericht<select id="dishSelect" size="7" aria-label="Gericht auswählen"></select></label><p id="adaptedRecipe" class="hint" hidden>Die Beschreibung wird an die gewählte Zutat angepasst.</p><div class="target-controls"><label>Wochentag<select id="targetDay"></select></label><label>Menüplatz<select id="targetRow"></select></label></div><button id="applyRecipe" class="primary">In den Plan einsetzen</button><p id="pickerStatus" class="hint" role="status">Oder klicke einen Menüplatz im Plan an.</p></aside></div><dialog id="proteinDialog" aria-labelledby="proteinDialogTitle"><h2 id="proteinDialogTitle">Zutat wählen</h2><p id="proteinDishName" class="hint"></p><div id="proteinChoices" class="protein-choices"></div><div class="dialog-actions"><button id="cancelProtein" type="button">Abbrechen</button></div></dialog><dialog id="dishDialog" aria-labelledby="dishDialogTitle"><form id="customDishForm"><h2 id="dishDialogTitle">Eigenes Gericht hinzufügen</h2><p class="hint">Einmal erfassen und für weitere Menüpläne wiederverwenden.</p><label>Gerichtname<input name="dish" id="customDishName" required maxlength="100" placeholder="Zum Beispiel Zitronengras-Curry"></label><label>Fleisch oder vegetarisch<select name="protein" id="customDishProtein"></select></label><p class="hint">Beschreibung ohne Fleisch oder Tofu erfassen. Die gewählte Fleisch- oder Vegioption wird automatisch ergänzt.</p><label>Beschreibung<textarea name="description" id="customDishDescription" required maxlength="2000" rows="5" placeholder="Zum Beispiel mit Zitronengras, Gemüse und Kokosmilch"></textarea></label><p id="customDishError" role="alert"></p><div class="dialog-actions"><button type="button" id="cancelDish">Abbrechen</button><button type="submit" class="primary">Gericht speichern</button></div></form></dialog><input id="file" type="file" accept=".json,application/json" hidden><script>const INITIAL_CONTENT = {"menus": [[["Fried Rice mit Crevetten", "Gebratener Reiseintopf mit Crevetten, Gemüse und Ei"], ["Grünes Curry mit Fischfilets", "Fischfilets mit Thai-Basilikum und Erbsen an grünem Kokosmilch-Curry (pikant)"], ["Rotes Kokos-Curry mit Crevetten", "Crevetten mit zarten Bambussprossen an rotem Kokosmilch-Curry (leicht pikant)"], ["Rotes Kokos-Curry mit Entenbrust", "Entenbrust mit zarten Bambussprossen an rotem Kokosmilch-Curry (leicht pikant)"], ["Süss-sauer scharf mit Fischfilets", "Fischfilets mit Tomaten, Baby-Corn und Zwiebeln (sehr scharf)"]], [["Pad Krapao mit Poulet", "Poulet mit frischen Chilis und Thai-Basilikum gebraten (sehr scharf)"], ["Massaman-Curry mit Poulet", "Poulet mit Kartoffelstückchen und Erdnüssen an mildem «Massaman»-Kokos-Curry"], ["Nam Prik Pao mit Poulet", "Poulet mit frischen Chilis, Baby Corn und Cashew-Nüssen gebraten (sehr scharf)"], ["Gelbes Curry mit Poulet", "Poulet mit Karottenstückchen und Ananas an gelbem Kokosmilch-Curry"], ["Grünes Curry mit Poulet", "Poulet mit Thai-Basilikum und Erbsen an grünem Kokosmilch-Curry (pikant)"]], [["Massaman-Curry mit Rindfleisch", "Rindfleisch mit Kartoffelstückchen und Erdnüssen an mildem «Massaman»-Kokos-Curry"], ["Rotes Kokos-Curry mit Rindfleisch", "Rindfleisch mit zarten Bambussprossen an rotem Kokosmilch-Curry (leicht pikant)"], ["Penang-Curry mit Rindfleisch", "Rindfleisch mit Kartoffelstückchen und Karotten an «Penang» Kokosmilch-Curry"], ["Pad Thai mit Rindfleisch", "Gebratene Reisnudeln mit Rindfleisch, Ei und Erdnüssen"], ["Fried Noodles mit Rindfleisch", "Gebratene Weizennudeln mit Rindfleisch und frischem Gemüse"]], [["Grünes Curry mit Tofu", "Tofu mit Thai-Basilikum und Erbsen an grünem Kokosmilch-Curry (pikant)"], ["Pad Thai mit Gemüse", "Gebratene Reisnudeln mit Gemüse, Ei und Erdnüssen"], ["Curry Fried Rice gelb mit Gemüse", "Mit Ananasstückchen, Cashew-Nüssen und Gemüse (leicht pikant)"], ["Süss-sauer mit Tofu", "Tofu mit Ananas- und Gemüsestückchen an feinster süss-sauer Sauce"], ["Massaman-Curry mit Gemüse", "Mit Kartoffelstückchen und Erdnüssen an mildem «Massaman»-Kokos-Curry und Gemüse"]]], "blocks": [[["Vorspeisen und Getränke", 10, true], ["Frühlingsrollen mit Gemüse  7.00  ·  Gemüsestückchen  8.00\nFrittierte Hackfleischbällchen  9.00\nGebackene Pouletstückchen (BRA)  9.00\nGebackene Crevetten  11.50\nGurken-Tomatensalat oder gemischter Salat  9.00\nPouletspiessli mit Erdnusssauce (BRA)  12.50\nPlastikbesteck / Stäbli  1.00", 8, false], ["Getränke je CHF 4.00", 8, true], ["Cola, Cola Zero, Fanta, Sprite, Ice-Tea, Sinalco,\nValser, Rivella rot/blau, Schorle", 8, false]], [["Weitere Menüs je CHF 17.00", 10, true], ["Frühlingsrollen-Menü", 8.5, true], ["1 Portion Frühlingsrollen, 1 Gurken-Tomatensalat mit\nZwiebelringen oder gemischter Salat,\n1 Tafelgetränk nach Wahl", 8, false], ["Pouletspiessli-Menü", 8.5, true], ["4 Pouletspiessli (BRA) und 1 Portion Reis", 8, false], ["Fleischdeklaration", 8, true], ["Poulet: Schweiz/Brasilien · Ente: Polen\nFisch: Vietnam · Rind und Schwein: Schweiz", 8, false]], [["Bestellung und Abholung", 10, true], ["031 382 59 59  ·  10.30 bis 13.00 Uhr", 11, true], ["Mindestbestellung: Bern und nähere Umgebung 3 Menüs;\nAgglomeration 5 Menüs.", 8, false], ["Take Away CHF 15.00", 10, true], ["Abholung mittags von 10.30 bis 13.00 Uhr.\nSchwarztorstrasse 93, 3007 Bern", 8, false], ["Ab 5 Menüs bitte gesammelt bezahlen.\nUnsere Kuriere führen höchstens CHF 200.00 mit.", 8, false], ["info@thaifoodkurier.ch  ·  www.thaifoodkurier.ch", 8, false]]]};</script><script>const MENU_CATALOG = [
@@ -1078,8 +1078,6 @@ function normalizeStoredMenu(texts){
  for(let r=0;r<4;r++)for(let c=0;c<5;c++){
   const tk=`m${r}${c}title`,dk=`m${r}${c}desc`;
   if(typeof texts[tk]!=='string'||typeof texts[dk]!=='string')continue;
-  const parts=texts[tk].match(/^(.*?) mit (Poulet|Rindfleisch|Schweinefleisch|Crevetten|Fischfilets|Tofu|Gemüse|Entenbrust)$/);
-  if(parts)texts[tk]=menuDisplayDish(parts[1])+' mit '+parts[2];
   texts[dk]=cleanMenuDescription(texts[dk],texts[tk]);
   if(/^Süss-sauer scharf mit /i.test(texts[tk])&&/^Mit Ananas- und Gemüsestückchen an feinster süss-sauer Sauce(?: \(.*?\))?$/i.test(texts[dk])){
    const recipes=[...(state.editedRecipes||[]),...(state.customRecipes||[]),...MENU_CATALOG];
@@ -1111,25 +1109,29 @@ for(const r of x.editedRecipes){
 if(x.deletedRecipeIds===undefined)x.deletedRecipeIds=[];if(!Array.isArray(x.deletedRecipeIds)||x.deletedRecipeIds.length>2000||x.deletedRecipeIds.some(id=>typeof id!=='string'||id.length>150))throw Error('Ungültige gelöschte Gerichte.');return x}
 // The user edition owns its draft. The original draft is only read once to seed a separate copy.
 const USER_DRAFT_KEY='menu-studio-user-v1';
-let state=validate(clone(EMBEDDED_PLAN)),history=[],lastEdit=null;
+let state=validate(clone(EMBEDDED_PLAN)),history=[],lastEdit=null,loadedSavedMenu=false;
 try{
  const saved=localStorage.getItem(USER_DRAFT_KEY);
- if(saved){state=validate(JSON.parse(saved))}
+ if(saved){state=validate(JSON.parse(saved));loadedSavedMenu=true}
  else{
    const previous=localStorage.getItem('menu-studio-v1');
-   if(previous){try{state=validate(JSON.parse(previous))}catch{}}
+   if(previous){try{state=validate(JSON.parse(previous));loadedSavedMenu=true}catch{}}
    localStorage.setItem(USER_DRAFT_KEY,JSON.stringify(state));
  }
 }catch(e){void 0}
 const labels={brand:'Firmenname',service:'Zusatz beim Firmennamen',title:'Titel',included:'Beilagen und Lieferung',fineprint:'Fusszeile'};INITIAL_CONTENT.menus.forEach((row,r)=>row.forEach((_,c)=>{labels[`m${r}${c}title`]=`${['Montag','Dienstag','Mittwoch','Donnerstag','Freitag'][c]} · Menü ${r+1} · Name`;labels[`m${r}${c}desc`]=`${['Montag','Dienstag','Mittwoch','Donnerstag','Freitag'][c]} · Menü ${r+1} · Beschreibung`}));INITIAL_CONTENT.blocks.forEach((b,i)=>b.forEach((_,j)=>labels[`b${i}p${j}`]=`${['Zusatzangebote','Weitere Menüs','Bestellinformationen'][i]} · Text ${j+1}`));
 function remember(key){if(lastEdit!==key){history.push(clone(state));if(history.length>80)history.shift();lastEdit=key}void 0}
 function persist(){try{localStorage.setItem(USER_DRAFT_KEY,JSON.stringify(state));void 0}catch(e){void 0}checkSize()}
+function shortTitle(key){
+ const value=state.texts[key];
+ return /^m[0-3][0-4]title$/.test(key)?value.replace(/\bRindfleisch\b/gi,'Rind').replace(/\bSchweinefleisch\b/gi,'Schwein').replace(/\bFischfilets?\b/gi,'Fisch'):value;
+}
 function text(key,tag='div',className=''){
- const el=document.createElement(tag);el.className=className;el.textContent=state.texts[key];el.dataset.key=key;
+ const el=document.createElement(tag);el.className=className;el.textContent=shortTitle(key);if(className==='dish')el.title=state.texts[key];el.dataset.key=key;
  if(!/^m[0-3][0-4](title|desc)$/.test(key))return el;
  el.contentEditable='plaintext-only';el.setAttribute('role','textbox');el.setAttribute('aria-label',labels[key]);
- el.addEventListener('focus',()=>{lastEdit=null});
- el.addEventListener('input',()=>{const patch={[key]:el.innerText};if(!allowMenuChange(patch)){el.textContent=state.texts[key];return}remember(key);state.texts[key]=el.innerText;persist();checkSize()});return el;
+ el.addEventListener('focus',()=>{lastEdit=null;if(className==='dish')el.textContent=state.texts[key]});
+ el.addEventListener('input',()=>{const patch={[key]:el.innerText};if(!allowMenuChange(patch)){el.textContent=state.texts[key];return}remember(key);state.texts[key]=el.innerText;persist();checkSize()});if(className==='dish')el.addEventListener('blur',()=>{el.textContent=shortTitle(key);el.title=state.texts[key];checkSize()});return el;
 }
 function node(tag,cls,parent){const el=document.createElement(tag);el.className=cls;if(parent)parent.append(el);return el}
 function date(n){const d=new Date(state.start+'T12:00:00');d.setDate(d.getDate()+n);return d}
@@ -1148,6 +1150,8 @@ function fitMenuText(){
      content.style.display='block';content.style.height='auto';content.style.flex='0 0 auto';content.style.width='100%';content.style.minWidth='0';
      frame.style.justifyContent='flex-start';
      dish.style.whiteSpace='nowrap';
+     dish.style.overflow='hidden';
+     dish.style.textOverflow='ellipsis';
      dish.style.letterSpacing='-0.3px';
      dish.style.marginBottom='0';
      // Avoid repeating the protein already named in the heading.
@@ -1167,17 +1171,8 @@ function fitMenuText(){
      menus.push({content,dish,desc,height,width});
    }else labels.push({content,height,width,number:content.querySelector('.number')});
  });
- // Fit each heading separately: changing one menu must not resize the others.
- menus.forEach(cell=>{
-   cell.headingSize=state.style.menuTitleSize-1;
-   cell.dish.style.fontSize=cell.headingSize+'px';
-   if(cell.dish.scrollWidth>cell.width){
-     let low=1,high=cell.headingSize;
-     for(let i=0;i<16;i++){const mid=(low+high)/2;cell.dish.style.fontSize=mid+'px';if(cell.dish.scrollWidth<=cell.width)low=mid;else high=mid}
-     cell.headingSize=low;
-   }
-   cell.dish.style.fontSize=cell.headingSize+'px';
- });
+ // Titles share the chosen font size. Long names wrap without rewriting.
+ menus.forEach(({dish})=>{dish.style.fontSize=(state.style.menuTitleSize-2.8)+'px'});
  // Fit descriptions independently too; a long menu must not shrink its neighbours.
  menus.forEach(cell=>{
    cell.content.style.display='grid';cell.content.style.height='auto';
@@ -1463,13 +1458,13 @@ sync();persist();
 const PDF_REFERENCE_MENUS = {"m00title": "Fried Rice mit Crevetten", "m00desc": "Gebratener Reiseintopf mit Crevetten, Gemüse und Ei", "m01title": "Grünes Curry mit Fischfilets", "m01desc": "Fischfilets mit Thai-Basilikum und Erbsen an grünem Kokosmilch-Curry (pikant)", "m02title": "Rotes Kokos-Curry mit Crevetten", "m02desc": "Crevetten mit zarten Bambussprossen an rotem Kokosmilch-Curry (leicht pikant)", "m03title": "Rotes Kokos-Curry mit Entenbrust", "m03desc": "Entenbrust mit zarten Bambussprossen an rotem Kokosmilch-Curry (leicht pikant)", "m04title": "Süss-sauer scharf mit Fischfilets", "m04desc": "Fischfilets mit Tomaten, Baby-Corn und Zwiebeln (sehr scharf)", "m10title": "Pad Krapao mit Poulet", "m10desc": "Poulet mit frischen Chilis und Thai-Basilikum gebraten (sehr scharf)", "m11title": "Massaman-Curry mit Poulet", "m11desc": "Poulet mit Kartoffelstückchen und Erdnüssen an mildem «Massaman»-Kokos-Curry", "m12title": "Nam Prik Pao mit Poulet", "m12desc": "Poulet mit frischen Chilis, Baby Corn und Cashew-Nüssen gebraten (sehr scharf)", "m13title": "Gelbes Curry mit Poulet", "m13desc": "Poulet mit Karottenstückchen und Ananas an gelbem Kokosmilch-Curry", "m14title": "Grünes Curry mit Poulet", "m14desc": "Poulet mit Thai-Basilikum und Erbsen an grünem Kokosmilch-Curry (pikant)", "m20title": "Massaman-Curry mit Rindfleisch", "m20desc": "Rindfleisch mit Kartoffelstückchen und Erdnüssen an mildem «Massaman»-Kokos-Curry", "m21title": "Rotes Kokos-Curry mit Rindfleisch", "m21desc": "Rindfleisch mit zarten Bambussprossen an rotem Kokosmilch-Curry (leicht pikant)", "m22title": "Penang-Curry mit Rindfleisch", "m22desc": "Rindfleisch mit Kartoffelstückchen und Karotten an «Penang» Kokosmilch-Curry", "m23title": "Pad Thai mit Rindfleisch", "m23desc": "Gebratene Reisnudeln mit Rindfleisch, Ei und Erdnüssen", "m24title": "Fried Noodles mit Rindfleisch", "m24desc": "Gebratene Weizennudeln mit Rindfleisch und frischem Gemüse", "m30title": "Grünes Curry mit Tofu", "m30desc": "Tofu mit Thai-Basilikum und Erbsen an grünem Kokosmilch-Curry (pikant)", "m31title": "Pad Thai mit Gemüse", "m31desc": "Gebratene Reisnudeln mit Gemüse, Ei und Erdnüssen", "m32title": "Curry Fried Rice gelb mit Gemüse", "m32desc": "Mit Ananasstückchen, Cashew-Nüssen und Gemüse (leicht pikant)", "m33title": "Süss-sauer mit Tofu", "m33desc": "Tofu mit Ananas- und Gemüsestückchen an feinster süss-sauer Sauce", "m34title": "Massaman-Curry mit Gemüse", "m34desc": "Mit Kartoffelstückchen und Erdnüssen an mildem «Massaman»-Kokos-Curry und Gemüse"};
 const PDF_REFERENCE_KEY='menu-plan-exact-pdf-reference-2026-10-01-v1';
 try {
- if(!localStorage.getItem(PDF_REFERENCE_KEY)){
+ if(!loadedSavedMenu&&!localStorage.getItem(PDF_REFERENCE_KEY)){
   localStorage.setItem(PDF_REFERENCE_KEY+'-backup',JSON.stringify(state));
   Object.assign(state.texts,PDF_REFERENCE_MENUS);
   sync();persist();
   localStorage.setItem(PDF_REFERENCE_KEY,'applied');
  }
-}catch(error){Object.assign(state.texts,PDF_REFERENCE_MENUS);sync();}
+}catch(error){if(!loadedSavedMenu){Object.assign(state.texts,PDF_REFERENCE_MENUS);sync();}}
 </script><style id="monochromePrintTemplate">
 @media print{
  html,body{background:#fff!important;color:#000!important}
