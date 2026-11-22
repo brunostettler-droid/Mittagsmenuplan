@@ -2191,9 +2191,14 @@ try {
  const status=document.createElement('p');status.className='hint';
  status.setAttribute('role','status');panel.append(status);
  controls.after(panel);
+ document.getElementById('applyRecipe').style.setProperty('display','none','important');
  button.onclick=()=>{
   const value=input.value.trim();
-  if(!value){status.textContent='Bitte zuerst einen Text eingeben.';input.focus();return}
+  if(!value){
+   document.getElementById('applyRecipe').click();
+   status.textContent=document.getElementById('pickerStatus').textContent;
+   return;
+  }
   const day=document.querySelector('#targetDay').value;
   lastEdit=null;remember('day-notice');
   for(let row=0;row<4;row++){
@@ -2201,6 +2206,7 @@ try {
    state.texts[`m${row}${day}desc`]=value;
   }
   lastEdit=null;sync();persist();
+  input.value='';
   status.textContent='Eingesetzt für '+DAYS[Number(day)]+' in allen vier Menüzeilen.';
  };
 })();
